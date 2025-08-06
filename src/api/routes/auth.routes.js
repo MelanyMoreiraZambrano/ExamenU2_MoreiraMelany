@@ -24,7 +24,7 @@ router.get('/google/callback',
       "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjEyMzQ1IiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c";
 
     // Redirige al frontend con el token como query parameter
-    res.redirect(`http://localhost:5173/auth/callback?token=${mockToken}`); // Cambia la URL a la de tu frontend
+    res.redirect(`http://localhost:3001/auth/callback?token=${mockToken}`);
   }
 );
 
