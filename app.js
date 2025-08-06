@@ -6,6 +6,8 @@ const { Server } = require('socket.io');
 const chatHandler = require('./src/infrastructure/websockets/chat.handler');
 const authSocket = require('./src/infrastructure/middlewares/auth.middleware');
 const cors = require('cors');
+const passport = require('passport');
+require('./src/config/passport-setup'); // Asegúrate que la ruta sea correcta
 
 const app = express();
 const server = http.createServer(app);
@@ -20,6 +22,7 @@ app.use(cors({
   credentials: true
 }));
 io.use(authSocket);
+app.use(passport.initialize());
 
 // Rutas
 const authRoutes = require('./src/api/routes/auth.routes');

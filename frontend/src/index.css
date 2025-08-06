@@ -1,0 +1,47 @@
+body {
+  background: #f5f6fa;
+  font-family: 'Segoe UI', Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+.login-container {
+  max-width: 350px;
+  margin: 80px auto;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+  padding: 32px 24px;
+  text-align: center;
+}
+
+.login-container h2 {
+  margin-bottom: 24px;
+  color: #333;
+}
+
+.google-btn {
+  background: #4285f4;
+  color: #fff;
+  border: none;
+  padding: 12px 24px;
+  border-radius: 6px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.google-btn:hover {
+  background: #357ae8;
+}
+
+.dashboard {
+  max-width: 400px;
+  margin: 80px auto;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+  padding: 32px 24px;
+  text-align: center;
+  color: #222;
+}
