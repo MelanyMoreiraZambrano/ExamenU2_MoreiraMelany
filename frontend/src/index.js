@@ -1,26 +1,36 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import './index.css';
 import App from './App';
 import AuthCallback from './AuthCallback';
 import reportWebVitals from './reportWebVitals';
+import Dashboard from './Dashboard';
+import Login from './Login';
 
-const Dashboard = () => (
-  <div className="dashboard">
-    <h2>Bienvenido al panel</h2>
-    <p>Has iniciado sesión correctamente.</p>
-  </div>
-);
+
+function PrivateRoute({ children }) {
+  const token = localStorage.getItem("token");
+  console.log("TOKEN EN PRIVATEROUTE:", token);
+  return token ? children : <Navigate to="/login" />;
+}
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<App />} />
+        <Route path="/login" element={<Login />} />
         <Route path="/auth/callback" element={<AuthCallback />} />
-        <Route path="/dashboard" element={<Dashboard />} />
+        <Route
+          path="/dashboard"
+          element={
+            <PrivateRoute>
+              <Dashboard />
+            </PrivateRoute>
+          }
+        />
+        <Route path="*" element={<Navigate to="/login" />} />
       </Routes>
     </BrowserRouter>
   </React.StrictMode>

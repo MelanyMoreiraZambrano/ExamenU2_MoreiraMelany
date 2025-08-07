@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const passport = require('passport');
 const authController = require('../controllers/auth.controller');
+const { generateJWT } = require('../../utils/jwt'); // <-- Importa la función aquí
 
 router.post('/register', authController.register);
 router.post('/login', authController.login);
@@ -12,20 +13,11 @@ router.get('/google', passport.authenticate('google', {
 }));
 
 // Ruta de callback a la que Google redirige tras la autorización
-router.get('/google/callback',
-  passport.authenticate('google', { session: false, failureRedirect: '/login-error' }),
-  (req, res) => {
-    // ¡Autenticación exitosa! `req.user` contiene los datos del usuario.
-    // Aquí es donde generas tu propio JWT
-    // const token = generateToken({ id: req.user.id, email: req.user.email, role: req.user.role });
-
-    // --- SIMULACIÓN PARA LA TAREA ---
-    const mockToken =
-      "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjEyMzQ1IiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c";
-
-    // Redirige al frontend con el token como query parameter
-    res.redirect(`http://localhost:3001/auth/callback?token=${mockToken}`);
-  }
-);
+router.get('/google/callback', passport.authenticate('google', { session: false }), (req, res) => {
+  // Genera el token JWT para el usuario autenticado
+  const token = generateJWT(req.user);
+  // Redirige al frontend con el token y el email
+  res.redirect(`http://localhost:3000/auth/callback?token=${token}&email=${encodeURIComponent(req.user.email)}`);
+});
 
 module.exports = router;
