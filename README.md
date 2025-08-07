@@ -11,7 +11,12 @@
 **Melany Rosmery Moreira Zambrano**
 
 ---
+## 🔗 Enlaces Importantes
 
+- 🎥 **Video de Funcionamiento:** [Ver en Google Drive](https://drive.google.com/drive/folders/1MlohiNv0ST0SognR_BX7ZTjIBn66LatA?usp=sharing)  
+- 💻 **Repositorio en GitHub:** [https://github.com/MelanyMoreiraZambrano/ExamenU2_MoreiraMelany.git](https://github.com/MelanyMoreiraZambrano/ExamenU2_MoreiraMelany.git)
+
+---
 ## RESUMEN
 
 En este trabajo, la aplicación web se diseñó para usar autenticación de terceros mediante OAuth 2.0, lo que facilita conexiones seguras y confiables a través de proveedores externos como Google. Se implementó un sistema de chat en tiempo real con Socket.IO, que permite la comunicación instantánea entre usuarios autenticados. La integración con JWT garantiza la validación y autorización de usuarios en el backend. El laboratorio proporcionó un conocimiento profundo de los mecanismos de autenticación y autorización, la comunicación cliente-servidor en tiempo real y la seguridad de las aplicaciones web modernas. Finalmente, se demostró que la implementación eficaz de OAuth 2.0 mejora la experiencia del usuario y la seguridad del sistema.
